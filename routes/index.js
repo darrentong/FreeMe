@@ -8,10 +8,11 @@ router.get('/', function(req, res) {
 
 /* POST to Calendar Rendering */
 router.post('/calendar', function(req, res) {
-	var conn = new Mongo();
-	conn.load("syllabus_orig.js");
+	res.render('calendar', { });
+	var db = req.db;
+	// Get body of class file
+	var str = req.body.classes;
 	
-	var collection = db.getCollection("syllabus.js");
     });
 
 module.exports = router;
