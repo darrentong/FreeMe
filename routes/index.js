@@ -16,11 +16,10 @@ router.post('/calendar', function(req, res) {
 	var str = req.body.classes;
 	console.log(str);
 	var arr = str.trim().split(",");
-	var hash = {};
+	var hash = new Object();
 	
 	var collection = db.get('syllabus');
 
-	var hash = {};
 	for (i=0; i < arr.length; i++) {
 	    collection.find({catalogId: arr[i]},{},function(e, docs){
 	    	var docsKeys = Object.keys(docs);
@@ -56,23 +55,54 @@ router.post('/calendar', function(req, res) {
 	    			for(k=0; k<currentExams.length; k++) {
 	    				if(hash[currentExams[k].dueDate] === undefined) {
 	    					hash[currentExams[k].dueDate] = {};
-	    					hash[currentExams[k].dueDate][currentExams[k].name] = 5;
+	    					hash[currentExams[k].dueDate][currentExams[k].name] = 6;
 	    				}
 	    				else {
-	    					hash[currentExams[k].dueDate][currentExams[k].name] = 5;
+	    					hash[currentExams[k].dueDate][currentExams[k].name] = 6;
 	    				}
 	    			}
 	    		}
 
+	    		if(docs[j].hasOwnProperty('misc')) {
+	    			currentMisc = docs[j].misc;
+	    			for(k=0; k<currentMisc.length; k++) {
+	    				if(currentMisc[k].name.match(/(P|p)roj/) != null ||
+	    					currentMisc[k].name.match(/(E|e)ssay/) != null ||
+	    					currentMisc[k].name.match(/(R|r)eport/) != null ||
+	    					currentMisc[k].name.match(/(P|p)aper/) != null) {
+	    					if(hash[currentMisc[k].dueDate] === undefined) {
+		    					hash[currentMisc[k].dueDate] = {};
+		    					hash[currentMisc[k].dueDate][currentMisc[k].name] = 5;
+		    				}
+		    				else {
+		    					hash[currentMisc[k].dueDate][currentMisc[k].name] = 5;
+		    				}
+	    				}
+	    				else if(currentMisc[k].name.match(/(A|a)ssignment/) != null ||
+		    					currentMisc[k].name.match(/(H|h)omework/) != null ||
+		    					currentMisc[k].name.match(/(W|w)riting/) != null ||
+		    					currentMisc[k].name.match(/(J|j)ournal/) != null) {
+	    					if(hash[currentMisc[k].dueDate] === undefined) {
+		    					hash[currentMisc[k].dueDate] = {};
+		    					hash[currentMisc[k].dueDate][currentMisc[k].name] = 1;
+		    				}
+		    				else {
+		    					hash[currentMisc[k].dueDate][currentMisc[k].name] = 1;
+		    				}
+	    				}
+	    			}
+	    		}
+	    		res.render('calendar', { 
+			    	"workload" : hash
+			    });
 	    	}
-
+			
 		});
-		res.render('calendar', { 
-	    	"workload" : hash
-	    });
+		
 	}
+
 	
 	
-    });
+});
 
 module.exports = router;
