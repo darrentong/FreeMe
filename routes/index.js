@@ -20,8 +20,9 @@ router.post('/calendar', function(req, res) {
 	var collection = db.get('syllabus');
 
 	for (i=0; i < arr.length; i++) {
-	    var json = collection.find({catalogId: arr[i]});
-	    console.log(json.classRoom);
+	    collection.find({catalogId: arr[i]},{},function(e,docs){
+		    console.log(docs);
+		});
 
 	}
 	
