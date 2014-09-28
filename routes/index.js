@@ -119,8 +119,9 @@ router.post('/calendar', function(req, res) {
 	    	}
 	    	
 	    	res.render('calendar', { 
-			    	"jsonArray" : JSON.stringify(jsonArray)
+			    	"jsonArray" : jsonArray
 			    });
+			
 			
 		});
 		

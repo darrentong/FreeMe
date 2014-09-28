@@ -25,7 +25,8 @@ html
     #calendar
 
   script.
-    var parse = JSON.parse(!{jsonArray});
+    function simple() {
+    var parse = !{JSON.stringify(jsonArray)};
 
     $('#calendar').fullCalendar({
       header: {
@@ -38,3 +39,5 @@ html
       events: parse
 
     });
+    }
+    simple();
