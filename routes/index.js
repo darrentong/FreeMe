@@ -3,8 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-	res.render('index', { });
-    });
+  res.render('index', {title: 'FreeMe' });
+});
 
 /* POST to Calendar Rendering */
 router.post('/calendar', function(req, res) {
