@@ -188,7 +188,7 @@
 		padding: 0em 3em;
 		background: #009E2D;
 		letter-spacing: 0.20em;
-		line-height: 2em;
+		line-height: 26px;
 		text-decoration: none;
 		text-transform: uppercase;
 		font-weight: 400;
@@ -209,10 +209,22 @@
 		color: #272925;
 	}
 	.inputTxt{
-		height: 27px; 
+		height: 25px; 
 		width: 400px;
 	}
-	
+	input[type="submit"] {
+    		display: inline-block;
+		padding: 0em 3em;
+		background: #009E2D;
+		letter-spacing: 0.20em;
+		line-height: 2.1em;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 400;
+		font-size: 1em;
+		color: #FFF;
+		border: 0
+	}
 /*********************************************************************************/
 /* Heading Titles                                                                */
 /*********************************************************************************/
