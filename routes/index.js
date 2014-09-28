@@ -29,10 +29,10 @@ router.post('/calendar', function(req, res) {
 	    			for(k=0; k<currentAssignments.length; k++) {
 	    				if(hash[currentAssignments[k].dueDate] === undefined) {
 	    					hash[currentAssignments[k].dueDate] = {};
-	    					hash[currentAssignments[k].dueDate][currentAssignments[k].name] = 1;
+	    					hash[currentAssignments[k].dueDate][currentAssignments[k].name] = 2;
 	    				}
 	    				else {
-	    					hash[currentAssignments[k].dueDate][currentAssignments[k].name] = 1;
+	    					hash[currentAssignments[k].dueDate][currentAssignments[k].name] = 2;
 	    				}
 	    			}
 	    		}
@@ -55,10 +55,10 @@ router.post('/calendar', function(req, res) {
 	    			for(k=0; k<currentExams.length; k++) {
 	    				if(hash[currentExams[k].dueDate] === undefined) {
 	    					hash[currentExams[k].dueDate] = {};
-	    					hash[currentExams[k].dueDate][currentExams[k].name] = 6;
+	    					hash[currentExams[k].dueDate][currentExams[k].name] = 8;
 	    				}
 	    				else {
-	    					hash[currentExams[k].dueDate][currentExams[k].name] = 6;
+	    					hash[currentExams[k].dueDate][currentExams[k].name] = 8;
 	    				}
 	    			}
 	    		}
@@ -72,10 +72,10 @@ router.post('/calendar', function(req, res) {
 	    					currentMisc[k].name.match(/(P|p)aper/) != null) {
 	    					if(hash[currentMisc[k].dueDate] === undefined) {
 		    					hash[currentMisc[k].dueDate] = {};
-		    					hash[currentMisc[k].dueDate][currentMisc[k].name] = 5;
+		    					hash[currentMisc[k].dueDate][currentMisc[k].name] = 7;
 		    				}
 		    				else {
-		    					hash[currentMisc[k].dueDate][currentMisc[k].name] = 5;
+		    					hash[currentMisc[k].dueDate][currentMisc[k].name] = 7;
 		    				}
 	    				}
 	    				else if(currentMisc[k].name.match(/(A|a)ssignment/) != null ||
@@ -84,10 +84,10 @@ router.post('/calendar', function(req, res) {
 		    					currentMisc[k].name.match(/(J|j)ournal/) != null) {
 	    					if(hash[currentMisc[k].dueDate] === undefined) {
 		    					hash[currentMisc[k].dueDate] = {};
-		    					hash[currentMisc[k].dueDate][currentMisc[k].name] = 1;
+		    					hash[currentMisc[k].dueDate][currentMisc[k].name] = 2;
 		    				}
 		    				else {
-		    					hash[currentMisc[k].dueDate][currentMisc[k].name] = 1;
+		    					hash[currentMisc[k].dueDate][currentMisc[k].name] = 2;
 		    				}
 	    				}
 	    			}
