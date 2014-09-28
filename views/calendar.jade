@@ -4,9 +4,21 @@ html
     meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
     title Home
     link(href='/fullcalendar/fullcalendar.css', rel='stylesheet')
+    link(href='/fullcalendar/fullcalendar.print.css', rel='stylesheet', media='print')
     script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.min.js')
+
+  style
+      body
+        margin 40px 10px
+        padding 0
+        font-family "Lucida Grande",Helvetica,Arial,Verdana,sans-serif
+        font-size 100px
+
+      #calendar
+        max-width 900px
+        margin 0 auto
 
   body
     #calendar
@@ -14,5 +26,40 @@ html
   script.
     
     $('#calendar').fullCalendar({
-    
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,basicWeek,basicDay'
+      },
+      editable: true,
+      eventLimit: true, // allow "more" link when too many events
+      events: [
+        {
+          title: 'Homework',
+          start: '2014-09-01',
+          end: '2014-09-03',
+          backgroundColor: '#2980b9',
+          borderColor: '#2980b9'
+
+        },
+        {
+          title: 'Quiz',
+          start: '2014-09-01',
+          end: '2014-09-04',
+          backgroundColor: '#8e44ad',
+          borderColor: '#8e44ad'
+        },
+        {
+          title: 'Exam',
+          start: '2014-09-11',
+          end: '2014-09-21',
+          backgroundColor: '#f1c40f',
+          borderColor: '#f1c40f'
+        },
+        {
+          title: 'Click for Google',
+          url: 'http://google.com/',
+          start: '2014-09-28'
+        }
+      ]
     });
