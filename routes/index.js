@@ -14,7 +14,7 @@ router.post('/calendar', function(req, res) {
 
 	// Get body of class file
 	var str = req.body.classes;
-	console.log(str);
+	
 	var arr = str.trim().split(",");
 	var hash = new Object();
 	
@@ -92,10 +92,35 @@ router.post('/calendar', function(req, res) {
 	    				}
 	    			}
 	    		}
-	    		res.render('calendar', { 
-			    	"workload" : hash
-			    });
+	    		
 	    	}
+	    	var jsonArray = [];
+	    	var i = 0;
+
+	    	for (var date in hash) {
+	    		if (hash.hasOwnProperty(date)) {
+	    			for (var assign in hash[date]) {
+	    				if (hash[date].hasOwnProperty(assign)) {
+	    					var tomorrow = new Date(date);
+							tomorrow.setDate(tomorrow.getDate() + 1);
+	    					jsonArray[i] = {
+	    						title: assign,
+         						start: new Date(date).toISOString().substring(0,10),
+          						end: tomorrow.toISOString().substring(0,10),
+          						backgroundColor: '#2980b9',
+          						borderColor: '#2980b9'
+	    					};
+
+	    					i = i + 1;
+	    				}
+	    			}
+	    			
+	    		}
+	    	}
+	    	
+	    	res.render('calendar', { 
+			    	"jsonArray" : JSON.stringify(jsonArray)
+			    });
 			
 		});
 		

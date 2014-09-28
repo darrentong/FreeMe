@@ -1,3 +1,4 @@
+
 doctype html
 html
   head
@@ -24,7 +25,8 @@ html
     #calendar
 
   script.
-    
+    var parse = JSON.parse(!{jsonArray});
+
     $('#calendar').fullCalendar({
       header: {
         left: 'prev,next today',
@@ -33,33 +35,6 @@ html
       },
       editable: true,
       eventLimit: true, // allow "more" link when too many events
-      events: [
-        {
-          title: 'Homework',
-          start: '2014-09-01',
-          end: '2014-09-03',
-          backgroundColor: '#2980b9',
-          borderColor: '#2980b9'
+      events: parse
 
-        },
-        {
-          title: 'Quiz',
-          start: '2014-09-01',
-          end: '2014-09-04',
-          backgroundColor: '#8e44ad',
-          borderColor: '#8e44ad'
-        },
-        {
-          title: 'Exam',
-          start: '2014-09-11',
-          end: '2014-09-21',
-          backgroundColor: '#f1c40f',
-          borderColor: '#f1c40f'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2014-09-28'
-        }
-      ]
     });
