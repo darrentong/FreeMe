@@ -1,4 +1,5 @@
 var express = require('express');
+
 var router = express.Router();
 
 /* GET home page. */
@@ -16,10 +17,12 @@ router.post('/calendar', function(req, res) {
 	var arr = str.trim().split(",");
 	var hash = {};
 	
-	//var col = db.getCollection("syllabus");
+	var collection = db.get('syllabus');
 
 	for (i=0; i < arr.length; i++) {
-	    var json = db.getCollection("syllabus").find( {catalogId: arr[i]});
+	    var json = collection.find({catalogId: arr[i]});
+	    console.log(json.classRoom);
+
 	}
 	
 	
