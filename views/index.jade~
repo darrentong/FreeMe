@@ -20,7 +20,7 @@ head
       #banner
         .container
           .title
-            h2 Schedule planning for students
+            h2 Scheduled planning for students
             span.byline List the classes you are taking separated by commas
           ul.actions
             form(name="calendar", method="post",action='/calendar')
