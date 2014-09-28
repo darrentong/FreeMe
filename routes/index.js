@@ -94,30 +94,34 @@ router.post('/calendar', function(req, res) {
 	    		}
 	    		
 	    	}
+	    	
 	    	var jsonArray = [];
-	    	var i = 0;
+	    	var z = 0;
 
 	    	for (var date in hash) {
 	    		if (hash.hasOwnProperty(date)) {
 	    			for (var assign in hash[date]) {
 	    				if (hash[date].hasOwnProperty(assign)) {
-	    					var tomorrow = new Date(date);
-							tomorrow.setDate(tomorrow.getDate() + 1);
-	    					jsonArray[i] = {
+	    					var yesterday = new Date(date);
+							yesterday.setDate(yesterday.getDate() - 1);
+							var start = new Date(date);
+							start.setDate(start.getDate() - hash[date][assign] - 1);
+
+	    					jsonArray[z] = {
 	    						title: assign,
-         						start: new Date(date).toISOString().substring(0,10),
-          						end: tomorrow.toISOString().substring(0,10),
+         						start: start.toISOString().substring(0,10),
+          						end: yesterday.toISOString().substring(0,10),
           						backgroundColor: '#2980b9',
           						borderColor: '#2980b9'
 	    					};
 
-	    					i = i + 1;
+	    					z = z + 1;
 	    				}
 	    			}
 	    			
 	    		}
 	    	}
-	    	
+	    	console.log(jsonArray);
 	    	res.render('calendar', { 
 			    	"jsonArray" : jsonArray
 			    });
