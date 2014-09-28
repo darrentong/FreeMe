@@ -10,8 +10,18 @@ router.get('/', function(req, res) {
 router.post('/calendar', function(req, res) {
 	res.render('calendar', { });
 	var db = req.db;
+
 	// Get body of class file
 	var str = req.body.classes;
+	var arr = str.trim().split(",");
+	var hash = {};
+	
+	//var col = db.getCollection("syllabus");
+
+	for (i=0; i < arr.length; i++) {
+	    var json = db.getCollection("syllabus").find( {catalogId: arr[i]});
+	}
+	
 	
     });
 
